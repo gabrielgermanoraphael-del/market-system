@@ -31,4 +31,24 @@ public class productController {
         return productservice.getall();
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
+    public Product getById(@RequestParam Integer id){
+        return productservice.getById(id);
+
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping(value = "/{id}")
+    public void deleteById(@RequestParam Integer id){
+        productservice.deleteById(id);
+    }
+
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping(value = "/{id}" , consumes = APPLICATION_JSON_VALUE)
+    public void updateById(@RequestParam Integer id, @RequestBody Product product){
+        productservice.updateById(id, product);
+    }
+
 }
